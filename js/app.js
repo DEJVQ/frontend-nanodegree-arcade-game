@@ -9,7 +9,65 @@ var Enemy = function() {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images   
     this.sprite = 'images/enemy-bug.png';
+    
+    x1 = 0;
+    x2 = 0;
+    x3 = 0;
+    y = Math.floor(1+Math.random() * 200);
+    var speed = Math.floor(1+Math.random() * 2);
+    
+    setInterval(function() {
+        this.x1 += Math.floor(1+Math.random() * 5);;
+        this.x2 += Math.floor(1+Math.random() * 6);;
+        this.x3 += Math.floor(1+Math.random() * 7);;
+        
+        if(this.x1 > 500) {
+            this.x1 = -100;
+        }
+        if(this.x2 > 500) {
+            this.x2 = -100;
+        }
+        if(this.x3 > 500) {
+            this.x3 = -100;
+        } 
+    }, 50);
+    
 };
+
+//Enemy.prototype.position1 = function() {
+//    y = Math.floor(1+Math.random() * 200);
+//    var speed = Math.floor(1+Math.random() * 2);
+//    setInterval(function() {
+//        this.x += speed;
+//        
+//        if(this.x > 500) {
+//            this.x = -100;
+//        } 
+//    }, 50);
+//}
+//Enemy.prototype.position2 = function() {
+//    y = Math.floor(1+Math.random() * 200);
+//    var speed = Math.floor(1+Math.random() * 2);
+//    setInterval(function() {
+//        this.x += speed;
+//        
+//        if(this.x > 500) {
+//            this.x = -100;
+//        } 
+//    }, 50);
+//}
+//Enemy.prototype.position3 = function() {
+//    y = Math.floor(1+Math.random() * 200);
+//    var speed = Math.floor(1+Math.random() * 2);
+//    setInterval(function() {
+//        this.x += speed;
+//        
+//        if(this.x > 500) {
+//            this.x = -100;
+//        } 
+//    }, 50);
+//}
+
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -21,7 +79,9 @@ Enemy.prototype.update = function(dt) {
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    ctx.drawImage(Resources.get(this.sprite), x1, 60);
+    ctx.drawImage(Resources.get(this.sprite), x2, 140);
+    ctx.drawImage(Resources.get(this.sprite), x3, 230);
 };
 
 
@@ -34,6 +94,9 @@ var player = function() {
 //    var x =  200;
 //    var y = 300;
     this.sprite = 'images/char-boy.png';
+    
+    this.x = 200;
+    this.y = 300;
 }
 
 player.prototype.update = function(dt) {
@@ -45,61 +108,65 @@ player.prototype.update = function(dt) {
 
 
 
-var x = 200;
-var y = 300;
 var points = 0;
 var pointsContent = document.querySelector(".points");
 
 player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), x, y);
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 // Addded Move of Player
 player.prototype.handleInput = function(move) {
     if(move === "up") {
-        y -= 83;
-        console.log(y);
+        this.y -= 83;
+        
         // Checking if Player is moving on canvas
-        if( y < -30) {
+        if( this.y < -30) {
             
+
+            // Reseting Player position on Win
             points++;
-            x = 200;
-            y = 300;
+            this.x = 200;
+            this.y = 300;
             
             pointsContent.textContent = points;
+            
+            
+            allEnemies[1].speed = Math.floor(1+Math.random() * 2);
+            alert(speed);
             
         }
         
         player.render();
         
-        ctx.restore();
+        //ctx.restore();
     }
     if(move === "right") {
-        x += 101;
+        this.x += 101;
         
         // Checking if Player is moving on canvas
-        if( x > 400) {
-            x = 400;
+        if( this.x > 400) {
+            this.x = 400;
         }
         
         player.render();
     }
     if(move === "down") {
-        y += 83;
+        this.y += 83;
         
         // Checking if Player is moving on canvas
-        if( y > 380) {
-            y = 383;
+        if( this.y > 380) {
+            this.y = 383;
         }
         
         player.render();
     }
     if(move === "left") {
-        x -= 101;
+        this.x -= 101;
         
         // Checking if Player is moving on canvas
-        if( x < 0) {
-            x = -2;
+        if( this.x < 0) {
+            this.x = -2;
         }
         
         player.render();
@@ -114,10 +181,23 @@ player.prototype.handleInput = function(move) {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-const allEnemies = new Array();
+const allEnemies = [];
 allEnemies[0] = new Enemy();
 allEnemies[1] = new Enemy();
 allEnemies[2] = new Enemy();
+
+
+//allEnemies[0].position = function() {
+//}
+//allEnemies[1].position = function() {
+//}
+//allEnemies[2].position = function() {
+//}
+//
+//allEnemies[0].position();
+//allEnemies[1].position2();
+//allEnemies[2].position3();
+console.log(allEnemies);
 
 
 var player = new player();
