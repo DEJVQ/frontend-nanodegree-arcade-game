@@ -1,8 +1,5 @@
 
 
-
-
-
 // Enemies our player must avoid
 
 var Enemy = function() {
@@ -50,24 +47,37 @@ player.prototype.update = function(dt) {
 
 var x = 200;
 var y = 300;
+var points = 0;
+var pointsContent = document.querySelector(".points");
 
 player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), x, y);
 };
 
+// Addded Move of Player
 player.prototype.handleInput = function(move) {
     if(move === "up") {
         y -= 83;
-        
+        console.log(y);
+        // Checking if Player is moving on canvas
         if( y < -30) {
-            y = -34;
+            
+            points++;
+            x = 200;
+            y = 300;
+            
+            pointsContent.textContent = points;
+            
         }
         
         player.render();
+        
+        ctx.restore();
     }
     if(move === "right") {
         x += 101;
         
+        // Checking if Player is moving on canvas
         if( x > 400) {
             x = 400;
         }
@@ -77,6 +87,7 @@ player.prototype.handleInput = function(move) {
     if(move === "down") {
         y += 83;
         
+        // Checking if Player is moving on canvas
         if( y > 380) {
             y = 383;
         }
@@ -86,6 +97,7 @@ player.prototype.handleInput = function(move) {
     if(move === "left") {
         x -= 101;
         
+        // Checking if Player is moving on canvas
         if( x < 0) {
             x = -2;
         }

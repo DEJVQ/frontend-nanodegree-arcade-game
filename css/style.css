@@ -1,3 +1,10 @@
 body {
     text-align: center;
 }
+
+.points {
+    min-height: 100px;
+    padding-top: 30px;
+    font-size: 3em;
+    font-weight: 700;
+}
