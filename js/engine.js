@@ -16,15 +16,30 @@
 
 var characterSelectionBox = document.querySelector(".character-selection");
 var selectCharacter = document.querySelectorAll(".character-selection div");
+var hiddenCharacter = document.querySelector(".hidden-character");
+var clicks = 0;
+
+console.log(hiddenCharacter);
 
 
-for (var i = 0; i < selectCharacter.length; i++) {
+for (var i = 0; i < selectCharacter.length-1; i++) {
     selectCharacter[i].addEventListener("click", function() {
         characterSelectionBox.classList.add("hide");
-        console.log(this.className);
         player.sprite = `images/${this.className}.png`;
     });
 }
+hiddenCharacter.addEventListener("click", function () {
+    console.log(clicks);
+    clicks++;
+    if (clicks === 10) {
+        hiddenCharacter.classList.add("show");
+        console.log(hiddenCharacter.classList);
+    }
+    if (clicks === 11) {
+        characterSelectionBox.classList.add("hide");
+        player.sprite = `images/enemy-bug.png`;
+    }
+});
 
 
 
@@ -193,7 +208,8 @@ var Engine = (function(global) {
         'images/char-cat-girl.png',
         'images/char-horn-girl.png',
         'images/char-pink-girl.png',
-        'images/char-princess-girl.png'
+        'images/char-princess-girl.png',
+        'images/Gem Orange.png'
     ]);
     Resources.onReady(init);
 

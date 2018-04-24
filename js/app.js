@@ -62,15 +62,14 @@ player.prototype.update = function(dt) {
 
 
 var points = 0;
-var pointsContent = document.querySelector(".points");
+var pointsContent = document.querySelector(".points-container span");
 
 player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    //ctx.drawImage(Resources.get("images/Gem Orange.png"), this.x, this.y);
     
     player.checkCollision();
 };
-
-
 
 
 // Check collision
@@ -79,54 +78,42 @@ player.prototype.checkCollision = function() {
     
     // Check collision on collumn 1
     if(player.x < 0 && allEnemies[0].x < 0  && player.y === 51 || player.x < 0 && allEnemies[1].x < 0 && player.y === 134 || player.x < 0 && allEnemies[2].x < 0 && player.y === 217) {
-        player.x = 200;
-        player.y = 300;
-        
-        player.render();
-        points = 0;
-        pointsContent.textContent = 0;
+        player.resetPosition();
     }
     
     // Check collision on collumn 2
     if(player.x === 99  && allEnemies[0].x > 30 && allEnemies[0].x < 120 && player.y === 51 || player.x === 99 && allEnemies[1].x > 30 && allEnemies[1].x < 120 && player.y === 134 || player.x === 99 && allEnemies[2].x > 30 && allEnemies[2].x < 120 && player.y === 217) {
-        player.x = 200;
-        player.y = 300;
-        
-        player.render();
-        points = 0;
-        pointsContent.textContent = 0;
+        player.resetPosition();
     }
     
     // Check collision on collumn 3
     if(player.x === 200  && allEnemies[0].x > 150 && allEnemies[0].x < 280 && player.y === 51 || player.x === 200 && allEnemies[1].x > 150 && allEnemies[1].x < 280 && player.y === 134 || player.x === 200 && allEnemies[2].x > 150 && allEnemies[2].x < 280 && player.y === 217) {
-        player.x = 200;
-        player.y = 300;
-        
-        player.render();
-        points = 0;
-        pointsContent.textContent = 0;
+        player.resetPosition();
     }
     
     // Check collision on collumn 4
     if(player.x === 301  && allEnemies[0].x > 250 && allEnemies[0].x < 401 && player.y === 51 || player.x === 301 && allEnemies[1].x > 250 && allEnemies[1].x < 401 && player.y === 134 || player.x === 301 && allEnemies[2].x > 250 && allEnemies[2].x < 401 && player.y === 217) {
-        player.x = 200;
-        player.y = 300;
-        
-        player.render();
-        points = 0;
-        pointsContent.textContent = 0;
+        player.resetPosition();
     }
     
     // Check collision on collumn 5
     if(player.x === 400  && allEnemies[0].x > 350 && player.y === 51 || player.x === 400 && allEnemies[1].x > 350 && player.y === 134 || player.x === 400 && allEnemies[2].x > 350 && player.y === 217) {
-        player.x = 200;
-        player.y = 300;
-        
-        player.render();
-        points = 0;
-        pointsContent.textContent = 0;
+        player.resetPosition();
     }
 }
+
+player.prototype.resetPosition = function() {
+    player.x = 200;
+    player.y = 300;
+    player.render();
+    points = 0;
+    pointsContent.textContent = 0;
+    pointsContent.classList.add("collision");
+    setTimeout(function() {
+        pointsContent.classList.remove("collision");
+    }, 100);
+}
+
 
 // Addded Move of Player
 player.prototype.handleInput = function(move) {

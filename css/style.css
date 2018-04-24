@@ -4,13 +4,22 @@ body {
     letter-spacing: 5px
 }
 
+.points-container {
+    padding-top: 5%;
+}
 .points {
     min-height: 100px;
-    padding-top: 30px;
     font-size: 3em;
     font-weight: 700;
     color: #545454;
+    display: block;
+    transition: 0.2s;
 }
+
+.collision {
+    color: #ef6f6f;
+}
+
 .character-selection {
     width: 100%;
     height: 100%;
@@ -38,4 +47,17 @@ body {
 
 .hide {
 display: none;
+}
+
+
+.hidden-character {
+    display: block;
+    opacity: 0;
+    transition: 2s;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.show {
+    opacity: 1 !important;
 }
