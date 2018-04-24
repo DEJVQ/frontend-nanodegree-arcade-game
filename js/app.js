@@ -10,63 +10,20 @@ var Enemy = function() {
     // a helper we've provided to easily load images   
     this.sprite = 'images/enemy-bug.png';
     
-    x1 = 0;
-    x2 = 0;
-    x3 = 0;
+    var self = this;
+    
     y = Math.floor(1+Math.random() * 200);
     var speed = Math.floor(1+Math.random() * 2);
     
     setInterval(function() {
-        this.x1 += Math.floor(1+Math.random() * 5);;
-        this.x2 += Math.floor(1+Math.random() * 6);;
-        this.x3 += Math.floor(1+Math.random() * 7);;
+        self.x += Math.floor(1+Math.random() * 10);;
         
-        if(this.x1 > 500) {
-            this.x1 = -100;
+        if(self.x > 500) {
+            self.x = -100;
         }
-        if(this.x2 > 500) {
-            this.x2 = -100;
-        }
-        if(this.x3 > 500) {
-            this.x3 = -100;
-        } 
     }, 50);
-    
 };
 
-//Enemy.prototype.position1 = function() {
-//    y = Math.floor(1+Math.random() * 200);
-//    var speed = Math.floor(1+Math.random() * 2);
-//    setInterval(function() {
-//        this.x += speed;
-//        
-//        if(this.x > 500) {
-//            this.x = -100;
-//        } 
-//    }, 50);
-//}
-//Enemy.prototype.position2 = function() {
-//    y = Math.floor(1+Math.random() * 200);
-//    var speed = Math.floor(1+Math.random() * 2);
-//    setInterval(function() {
-//        this.x += speed;
-//        
-//        if(this.x > 500) {
-//            this.x = -100;
-//        } 
-//    }, 50);
-//}
-//Enemy.prototype.position3 = function() {
-//    y = Math.floor(1+Math.random() * 200);
-//    var speed = Math.floor(1+Math.random() * 2);
-//    setInterval(function() {
-//        this.x += speed;
-//        
-//        if(this.x > 500) {
-//            this.x = -100;
-//        } 
-//    }, 50);
-//}
 
 
 // Update the enemy's position, required method for game
@@ -79,9 +36,10 @@ Enemy.prototype.update = function(dt) {
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), x1, 60);
-    ctx.drawImage(Resources.get(this.sprite), x2, 140);
-    ctx.drawImage(Resources.get(this.sprite), x3, 230);
+//    /console.log(this.x);
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+//    ctx.drawImage(Resources.get(this.sprite), this.x2, 140);
+//    ctx.drawImage(Resources.get(this.sprite), this.x3, 230);
 };
 
 
@@ -91,8 +49,6 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 var player = function() {
-//    var x =  200;
-//    var y = 300;
     this.sprite = 'images/char-boy.png';
     
     this.x = 200;
@@ -103,7 +59,6 @@ player.prototype.update = function(dt) {
         // You should multiply any movement by the dt parameter
         // which will ensure the game runs at the same speed for
         // all computers.
-    
 };
 
 
@@ -113,6 +68,56 @@ var pointsContent = document.querySelector(".points");
 
 player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    // Check collision
+    
+    
+    //  console.log(allEnemies[0].x);
+    console.log(allEnemies[2].x);
+    
+//    console.log(allEnemies[1].x);
+//    
+//    console.log(allEnemies[2].x);
+    
+    if(player.x < 0 && allEnemies[0].x < 0  && player.y === 51 || player.x < 0 && allEnemies[1].x < 0 && player.y === 134 || player.x < 0 && allEnemies[2].x < 0 && player.y === 217) {
+        player.x = 200;
+        player.y = 300;
+        
+        player.render();
+        points = 0;
+        pointsContent.textContent = 0;
+    }
+    if(player.x === 99  && allEnemies[0].x > 30 && allEnemies[0].x < 120 && player.y === 51 || player.x === 99 && allEnemies[1].x > 30 && allEnemies[1].x < 120 && player.y === 134 || player.x === 99 && allEnemies[2].x > 30 && allEnemies[2].x < 120 && player.y === 217) {
+        player.x = 200;
+        player.y = 300;
+        
+        player.render();
+        points = 0;
+        pointsContent.textContent = 0;
+    }
+    if(player.x === 200  && allEnemies[0].x > 150 && allEnemies[0].x < 280 && player.y === 51 || player.x === 200 && allEnemies[1].x > 150 && allEnemies[1].x < 280 && player.y === 134 || player.x === 200 && allEnemies[2].x > 150 && allEnemies[2].x < 280 && player.y === 217) {
+        player.x = 200;
+        player.y = 300;
+        
+        player.render();
+        points = 0;
+        pointsContent.textContent = 0;
+    }
+    if(player.x === 301  && allEnemies[0].x > 250 && allEnemies[0].x < 401 && player.y === 51 || player.x === 301 && allEnemies[1].x > 250 && allEnemies[1].x < 401 && player.y === 134 || player.x === 301 && allEnemies[2].x > 250 && allEnemies[2].x < 401 && player.y === 217) {
+        player.x = 200;
+        player.y = 300;
+        
+        player.render();
+        points = 0;
+        pointsContent.textContent = 0;
+    }
+    if(player.x === 400  && allEnemies[0].x > 350 && player.y === 51 || player.x === 400 && allEnemies[1].x > 350 && player.y === 134 || player.x === 400 && allEnemies[2].x > 350 && player.y === 217) {
+        player.x = 200;
+        player.y = 300;
+        
+        player.render();
+        points = 0;
+        pointsContent.textContent = 0;
+    }
 };
 
 // Addded Move of Player
@@ -139,7 +144,6 @@ player.prototype.handleInput = function(move) {
         
         player.render();
         
-        //ctx.restore();
     }
     if(move === "right") {
         this.x += 101;
@@ -172,6 +176,7 @@ player.prototype.handleInput = function(move) {
         player.render();
     }
     
+    
 };
 
 
@@ -187,20 +192,17 @@ allEnemies[1] = new Enemy();
 allEnemies[2] = new Enemy();
 
 
-//allEnemies[0].position = function() {
-//}
-//allEnemies[1].position = function() {
-//}
-//allEnemies[2].position = function() {
-//}
-//
-//allEnemies[0].position();
-//allEnemies[1].position2();
-//allEnemies[2].position3();
-console.log(allEnemies);
 
+allEnemies[0].x = 0;
+allEnemies[1].x = -250;
+allEnemies[2].x = -360;
+
+allEnemies[0].y = 60;
+allEnemies[1].y = 145;
+allEnemies[2].y = 230;
 
 var player = new player();
+
 
 
 // This listens for key presses and sends the keys to your
