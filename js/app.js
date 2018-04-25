@@ -72,6 +72,7 @@ player.prototype.render = function() {
     
     player.checkCollision();
     player.getCoin();
+    player.checkPoints();
     
 };
 
@@ -204,6 +205,13 @@ player.prototype.resetPosition = function() {
 }
 
 
+player.prototype.checkPoints = function() {
+    if(points > 100 && waterpoints > 5 ) {
+        finishContent.classList.remove("hide");
+    }
+}
+
+
 // Addded Move of Player
 player.prototype.handleInput = function(move) {
     if(move === "up") {
@@ -264,6 +272,8 @@ player.prototype.handleInput = function(move) {
 var coinSpriteSelector = 0;
 var parameter1 = [15,115,215,318,420];
 var parameter2 = [115,200,280];
+
+var finishContent = document.querySelector(".finish");
 
 var Coin = function() {
     

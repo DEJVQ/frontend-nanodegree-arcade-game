@@ -18,7 +18,35 @@ var characterSelectionBox = document.querySelector(".character-selection");
 var selectCharacter = document.querySelectorAll(".character-selection div");
 var hiddenCharacter = document.querySelector(".hidden-character");
 
+var legendContentContainer = document.querySelector(".legend");
+var legendContent1 = document.querySelector(".content-1");
+var legendContent2 = document.querySelector(".content-2");
+var legendContent3 = document.querySelector(".content-3");
 
+var legendContentButton1 = document.querySelector(".content-1 button");
+var legendContentButton2 = document.querySelector(".content-2 button");
+var legendContentButton3 = document.querySelector(".content-3 button");
+
+var clicks = 0;
+
+
+
+/* Legend */
+legendContentButton1.addEventListener("click", function() {
+    legendContent1.classList.add("hide");
+    legendContent2.classList.remove("hide");
+});
+legendContentButton2.addEventListener("click", function() {
+    legendContent2.classList.add("hide");
+    legendContent3.classList.remove("hide");
+});
+legendContentButton3.addEventListener("click", function() {
+    legendContent3.classList.add("hide");
+    legendContentContainer.classList.add("hide");
+});
+
+
+/* Choose player */
 for (var i = 0; i < selectCharacter.length-1; i++) {
     selectCharacter[i].addEventListener("click", function() {
         player.sprite = `images/${this.className}.png`;
@@ -38,35 +66,6 @@ hiddenCharacter.addEventListener("click", function () {
         player.sprite = `images/enemy-bug.png`;
     }
 });
-
-
-
-var legendContentContainer = document.querySelector(".legend");
-var legendContent1 = document.querySelector(".content-1");
-var legendContent2 = document.querySelector(".content-2");
-var legendContent3 = document.querySelector(".content-3");
-
-var legendContentButton1 = document.querySelector(".content-1 button");
-var legendContentButton2 = document.querySelector(".content-2 button");
-var legendContentButton3 = document.querySelector(".content-3 button");
-
-var clicks = 0;
-
-legendContentButton1.addEventListener("click", function() {
-    legendContent1.classList.add("hide");
-    legendContent2.classList.remove("hide");
-});
-legendContentButton2.addEventListener("click", function() {
-    legendContent2.classList.add("hide");
-    legendContent3.classList.remove("hide");
-});
-legendContentButton3.addEventListener("click", function() {
-    legendContent3.classList.add("hide");
-    legendContentContainer.classList.add("hide");
-});
-
-
-
 
 var Engine = (function(global) {
     /* Predefine the variables we'll be using within this scope,
