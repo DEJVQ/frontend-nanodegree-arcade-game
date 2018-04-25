@@ -8,6 +8,7 @@ var Enemy = function() {
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images   
+    //this.sprite = 'images/enemy-bug.png';
     this.sprite = 'images/enemy-bug.png';
     
     var self = this;
@@ -40,8 +41,6 @@ Enemy.prototype.render = function() {
 };
 
 
-
-
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
@@ -69,6 +68,8 @@ player.prototype.render = function() {
     //ctx.drawImage(Resources.get("images/Gem Orange.png"), this.x, this.y);
     
     player.checkCollision();
+    player.getCoin();
+    
 };
 
 
@@ -100,7 +101,48 @@ player.prototype.checkCollision = function() {
     if(player.x === 400  && allEnemies[0].x > 350 && player.y === 51 || player.x === 400 && allEnemies[1].x > 350 && player.y === 134 || player.x === 400 && allEnemies[2].x > 350 && player.y === 217) {
         player.resetPosition();
     }
+    
 }
+
+player.prototype.getCoin = function() {
+    
+    if(coin.x === 15 && coin.y === 115  && player.x === -2 && player.y === 51 || coin.x === 15 && coin.y === 200  && player.x === -2 && player.y === 134 || coin.x === 15 && coin.y === 280  && player.x === -2 && player.y === 217) {
+        points++;
+        pointsContent.textContent = points;
+        
+        setTimeout(coin.resetPosition(), 1000);
+    }
+    
+    
+    if(coin.x === 115 && coin.y === 115  && player.x === 99 && player.y === 51 || coin.x === 115 && coin.y === 200  && player.x === 99 && player.y === 134 || coin.x === 115 && coin.y === 280  && player.x === 99 && player.y === 217) {
+        points++;
+        pointsContent.textContent = points;
+        setTimeout(coin.resetPosition(), 1000);
+    }
+    
+    
+    if(coin.x === 215 && coin.y === 115  && player.x === 200 && player.y === 51 || coin.x === 215 && coin.y === 200  && player.x === 200 && player.y === 134 || coin.x === 215 && coin.y === 280  && player.x === 200 && player.y === 217) {
+        points++;
+        pointsContent.textContent = points;
+        setTimeout(coin.resetPosition(), 1000);
+    }
+    
+    
+    
+    if(coin.x === 318 && coin.y === 115  && player.x === 301 && player.y === 51 || coin.x === 318 && coin.y === 200  && player.x === 301 && player.y === 134 || coin.x === 318 && coin.y === 280  && player.x === 301 && player.y === 217) {
+        points++;
+        pointsContent.textContent = points;
+        setTimeout(coin.resetPosition(), 1000);
+    }
+    
+    
+    if(coin.x === 420 && coin.y === 115  && player.x === 400 && player.y === 51 || coin.x === 420 && coin.y === 200  && player.x === 400 && player.y === 134 || coin.x === 420 && coin.y === 280  && player.x === 400 && player.y === 217) {
+        points++;
+        pointsContent.textContent = points;
+        setTimeout(coin.resetPosition(), 1000);
+    }
+}
+
 
 player.prototype.resetPosition = function() {
     player.x = 200;
@@ -168,6 +210,72 @@ player.prototype.handleInput = function(move) {
     
 };
 
+
+
+var Coin = function() {
+    
+    shuffle(parameter1);
+    shuffle(parameter2);
+    this.x = parameter1[0];
+    this.y = parameter2[0];
+    
+    this.sprite = 'images/Gem Orange.png';
+    
+}
+
+var coinSpriteSelector = 0;
+
+Coin.prototype.resetPosition = function() {
+    
+    shuffle(parameter1);
+    shuffle(parameter2);
+    coin.x = parameter1[0];
+    coin.y = parameter2[0];
+    
+    coinSprite = ["images/Gem Orange.png", "images/Gem Green.png", "images/Gem Blue.png"]
+    
+    coin.sprite =  coinSprite[(Math.floor(Math.random() * 2) + 1)];
+    
+//    coinSpriteSelector++;
+//    if (coinSpriteSelector === 3) {
+//        coinSpriteSelector = 0;
+//    }
+    
+    
+    
+    setTimeout(function() {
+        coin.render();
+    }, 2000);
+    
+}
+
+
+/**
+ * Shuffles array in place. ES6 version
+ * @param {Array} a items An array containing the items.
+ */
+
+var parameter1 = [15,115,215,318,420];
+var parameter2 = [115,200,280];
+function shuffle(a) {
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+
+Coin.prototype.appear = function() {
+    
+}
+
+
+Coin.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y, 70, 90);
+};
+
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
@@ -184,8 +292,10 @@ allEnemies[0].y = 60;
 allEnemies[1].y = 145;
 allEnemies[2].y = 230;
 
-var player = new player();
 
+
+var player = new player();
+var coin = new Coin();
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {

@@ -18,6 +18,7 @@ body {
 
 .collision {
     color: #ef6f6f;
+    transform: scale(1.2);
 }
 
 .character-selection {
