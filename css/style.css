@@ -3,6 +3,7 @@ body {
     font-family: cursive;
     letter-spacing: 5px
 }
+
 hr {
     height: 2px;
     background-color: #545454;
@@ -11,7 +12,6 @@ hr {
 
 .restart {
     margin-top: 5%;
-
 }
 
 .restart button {
@@ -22,12 +22,11 @@ hr {
     cursor: pointer;
     transition: 0.2s;
 }
+
 .restart button:hover {
     transform: scale(0.9);
     font-weight: 700;
 }
-
-
 
 .points {
     min-height: 100px;
@@ -43,9 +42,8 @@ hr {
     transform: scale(1.2);
 }
 
-
 .container-box {
-width: 100%;
+    width: 100%;
     height: 100%;
     position: absolute;
     background: rgb(255,255,255); /* Old browsers */
@@ -54,12 +52,12 @@ width: 100%;
     background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
 }
-.character-selection {
-}
+
 .character-selection h1 {
     margin-top: 15%;
     text-transform: uppercase;
 }
+
 .character-selection div {
     display: inline-block;
     padding: 70px;
@@ -67,14 +65,14 @@ width: 100%;
     transition: 0.2s;
     cursor: pointer;
 }
+
 .character-selection div:hover {
     transform: scale(0.9);
 }
 
 .hide {
-display: none;
+    display: none;
 }
-
 
 .hidden-character {
     display: block;
@@ -88,8 +86,6 @@ display: none;
     opacity: 1 !important;
 }
 
-
-
 /* Legend */
 .legend h2 {
     font-size: 32px;
@@ -102,18 +98,19 @@ display: none;
     margin: 0 auto;
     width: 50%;
 }
+
 .content-1 {
     margin-top: 10%;
     z-index: 3;
 }
+
 .content-2 {
     z-index: 2;
 }
+
 .content-3 {
     z-index: 1;
 }
-
-
 
 .next-page {
     padding: 10px 30px;
@@ -136,7 +133,6 @@ display: none;
 
 }
 
-
 @-webkit-keyframes shine {
   from {
     -webkit-mask-position: 150%;
@@ -147,12 +143,10 @@ display: none;
   }
 }
 
-
 .legend-image {
     width: 70px;
 }
 
-
 .finish-content {
-padding-top: 20% 
+    padding-top: 20%;
 }

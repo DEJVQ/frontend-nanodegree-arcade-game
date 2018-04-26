@@ -79,6 +79,7 @@ for (var j = 0; j < restartButton.length; j++) {
         legendContent1.classList.remove("hide");
         characterSelectionBox.classList.remove("hide");
         player.resetPosition();
+        pointsContent.classList.remove("collision");
         coin.resetPosition();
 
         stopwatch.textContent = "00:00:00";

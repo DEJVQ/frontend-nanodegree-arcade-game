@@ -1,5 +1,5 @@
 
-
+// Functions
 // Get random number beetween two values
 function randomIntFromInterval(min,max)
 {
@@ -23,20 +23,29 @@ function countTime() {
     
     timeInterval();
 }
+
 function timeInterval() {
     tick = setTimeout(countTime, 1000);
 }
 
 
+/**
+ * Shuffles array in place. ES6 version
+ * @param {Array} a items An array containing the items.
+ */ 
+function shuffle(a) {
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+
+// Obje
 // Enemies our player must avoid
-
 var Enemy = function() {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images   
-    //this.sprite = 'images/enemy-bug.png';
+    
     Enemy.sprite = 'images/enemy-bug.png';
     
     var self = this;
@@ -54,14 +63,7 @@ var Enemy = function() {
     }, 50);
 };
 
-
-
-// Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-        // You should multiply any movement by the dt parameter
-        // which will ensure the game runs at the same speed for
-        // all computers.
 };
 
 // Draw the enemy on the screen, required method for game
@@ -70,9 +72,6 @@ Enemy.prototype.render = function() {
 };
 
 
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
 var player = function() {
     this.sprite = 'images/char-boy.png';
     
@@ -82,9 +81,6 @@ var player = function() {
 }
 
 player.prototype.update = function(dt) {
-        // You should multiply any movement by the dt parameter
-        // which will ensure the game runs at the same speed for
-        // all computers.
 };
 
 
@@ -117,9 +113,7 @@ player.prototype.render = function() {
     
 };
 
-
 // Check collision
-    
 player.prototype.checkCollision = function() {
     
     // Check collision on collumn 1
@@ -149,6 +143,7 @@ player.prototype.checkCollision = function() {
     
 }
 
+// Check if the Player got Gem
 player.prototype.getCoin = function() {
     
     if(coin.x === 15 && coin.y === 115  && player.x === -2 && player.y === 51 || coin.x === 15 && coin.y === 200  && player.x === -2 && player.y === 134 || coin.x === 15 && coin.y === 280  && player.x === -2 && player.y === 217) {
@@ -156,25 +151,20 @@ player.prototype.getCoin = function() {
         coin.resetPosition();
     }
     
-    
     if(coin.x === 115 && coin.y === 115  && player.x === randomIntFromInterval(97,99)  && player.y === 51 || coin.x === 115 && coin.y === 200  && player.x === randomIntFromInterval(97,99) && player.y === 134 || coin.x === 115 && coin.y === 280  && player.x === randomIntFromInterval(97,99) && player.y === 217) {
         coin.addPoints();
         coin.resetPosition();
     }
-    
     
     if(coin.x === 215 && coin.y === 115  && player.x === randomIntFromInterval(198,200) && player.y === 51 || coin.x === 215 && coin.y === 200  && player.x === randomIntFromInterval(198,200) && player.y === 134 || coin.x === 215 && coin.y === 280  && player.x === randomIntFromInterval(198,200) && player.y === 217) {
         coin.addPoints();
         coin.resetPosition();
     }
     
-    
-    
     if(coin.x === 318 && coin.y === 115  && player.x === randomIntFromInterval(299,301) && player.y === 51 || coin.x === 318 && coin.y === 200  && player.x === randomIntFromInterval(299,301) && player.y === 134 || coin.x === 318 && coin.y === 280  && player.x === randomIntFromInterval(299,301) && player.y === 217) {
         coin.addPoints();
         coin.resetPosition();
     }
-    
     
     if(coin.x === 420 && coin.y === 115  && player.x === 400 && player.y === 51 || coin.x === 420 && coin.y === 200  && player.x === 400 && player.y === 134 || coin.x === 420 && coin.y === 280  && player.x === 400 && player.y === 217) {
         coin.addPoints();
@@ -182,7 +172,7 @@ player.prototype.getCoin = function() {
     }
 }
 
-
+// Reset position of player when collision
 player.prototype.resetPosition = function() {
     player.x = 200;
     player.y = 300;
@@ -196,10 +186,9 @@ player.prototype.resetPosition = function() {
 }
 
 
+// Check if player Won game
 player.prototype.checkPoints = function() {
     if(points > 100 && waterpoints > 9 ) {
-        
-        
         // Show time
         let finalTime = document.querySelector(".stopwatch-final");
         finalTime.textContent = stopwatch.textContent;
@@ -210,6 +199,8 @@ player.prototype.checkPoints = function() {
     }
 }
 
+
+// Additional event - for Ogarniamprad.pl - piggis character
 player.prototype.playerGrow = function() {
     if(player.sprite.indexOf("piggis") >= 0 ) {
         if (points > 3) {
@@ -285,6 +276,7 @@ player.prototype.handleInput = function(move) {
 };
 
 
+
 var coinSpriteSelector = 0;
 var parameter1 = [15,115,215,318,420];
 var parameter2 = [115,200,280];
@@ -305,7 +297,7 @@ var Coin = function() {
     
 }
 
-
+// Give random position of Coin when is collected
 Coin.prototype.resetPosition = function() {
     
     shuffle(parameter1);
@@ -326,6 +318,7 @@ Coin.prototype.resetPosition = function() {
     
 }
 
+// Add points for Gems
 Coin.prototype.addPoints = function() {
     
     points++;
@@ -341,30 +334,13 @@ Coin.prototype.addPoints = function() {
     pointsContent.textContent = points;
     
 }
-
-
-/**
- * Shuffles array in place. ES6 version
- * @param {Array} a items An array containing the items.
- */
-function shuffle(a) {
-    for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-}
-
-
-
+ 
+// Render Coin
 Coin.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y, 70, 90);
 };
 
-
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
+// Instance Objects
 const allEnemies = [];
 allEnemies[0] = new Enemy();
 allEnemies[1] = new Enemy();
@@ -378,10 +354,10 @@ allEnemies[0].y = 60;
 allEnemies[1].y = 145;
 allEnemies[2].y = 230;
 
-
-
 var player = new player();
 var coin = new Coin();
+
+
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
