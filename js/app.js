@@ -72,7 +72,7 @@ Enemy.prototype.render = function() {
 };
 
 
-var player = function() {
+var Player = function() {
     this.sprite = 'images/char-boy.png';
     
     this.x = 200;
@@ -80,7 +80,7 @@ var player = function() {
     
 }
 
-player.prototype.update = function(dt) {
+Player.prototype.update = function(dt) {
 };
 
 
@@ -90,7 +90,7 @@ var waterpoints = 0;
 var pointsContent = document.querySelector(".points-container .points");
 var waterPointsContent = document.querySelector(".points-container .water-points");
 
-player.prototype.render = function() {
+Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     //ctx.drawImage(Resources.get("images/Gem Orange.png"), this.x, this.y);
     
@@ -113,7 +113,7 @@ player.prototype.render = function() {
 };
 
 // Check collision
-player.prototype.checkCollision = function() {
+Player.prototype.checkCollision = function() {
     
     // Check collision on collumn 1
     if(player.x < 0 && allEnemies[0].x < 0  && player.y === 51 || player.x < 0 && allEnemies[1].x < 0 && player.y === 134 || player.x < 0 && allEnemies[2].x < 0 && player.y === 217) {
@@ -143,7 +143,7 @@ player.prototype.checkCollision = function() {
 }
 
 // Check if the Player got Gem
-player.prototype.getCoin = function() {
+Player.prototype.getCoin = function() {
     
     if(coin.x === 15 && coin.y === 115  && player.x === -2 && player.y === 51 || coin.x === 15 && coin.y === 200  && player.x === -2 && player.y === 134 || coin.x === 15 && coin.y === 280  && player.x === -2 && player.y === 217) {
         coin.addPoints();
@@ -172,10 +172,10 @@ player.prototype.getCoin = function() {
 }
 
 // Reset position of player when collision
-player.prototype.resetPosition = function() {
+Player.prototype.resetPosition = function() {
     player.x = 200;
     player.y = 300;
-    player.render();
+    this.render();
     points = 0;
     pointsContent.textContent = 0;
     pointsContent.classList.add("collision");
@@ -186,7 +186,7 @@ player.prototype.resetPosition = function() {
 
 
 // Check if player Won game
-player.prototype.checkPoints = function() {
+Player.prototype.checkPoints = function() {
     if(points > 100 && waterpoints > 9 ) {
         // Show time
         let finalTime = document.querySelector(".stopwatch-final");
@@ -200,7 +200,7 @@ player.prototype.checkPoints = function() {
 
 
 // Additional event - for Ogarniamprad.pl - piggis character
-player.prototype.playerGrow = function() {
+Player.prototype.playerGrow = function() {
     if(player.sprite.indexOf("piggis") >= 0 ) {
         if (points > 3) {
             player.sprite = "images/piggis-2.png";
@@ -219,7 +219,7 @@ player.prototype.playerGrow = function() {
 
 
 // Addded Move of Player
-player.prototype.handleInput = function(move) {
+Player.prototype.handleInput = function(move) {
     if(move === "up") {
         this.y -= 83;
         
@@ -243,7 +243,7 @@ player.prototype.handleInput = function(move) {
             }, 1000);
         }
         
-        player.render();
+        this.render();
         
     }
     if(move === "right") {
@@ -254,7 +254,7 @@ player.prototype.handleInput = function(move) {
             this.x = 400;
         }
         
-        player.render();
+        this.render();
     }
     if(move === "down") {
         this.y += 83;
@@ -264,7 +264,7 @@ player.prototype.handleInput = function(move) {
             this.y = 383;
         }
         
-        player.render();
+        this.render();
     }
     if(move === "left") {
         this.x -= 101;
@@ -274,7 +274,7 @@ player.prototype.handleInput = function(move) {
             this.x = -2;
         }
         
-        player.render();
+        this.render();
     }
     
     
@@ -358,7 +358,7 @@ allEnemies[0].y = 60;
 allEnemies[1].y = 145;
 allEnemies[2].y = 230;
 
-var player = new player();
+var player = new Player();
 var coin = new Coin();
 
 
