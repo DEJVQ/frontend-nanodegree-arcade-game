@@ -122,17 +122,17 @@ player.prototype.checkCollision = function() {
     }
     
     // Check collision on collumn 2
-    if(player.x === 99  && allEnemies[0].x > 30 && allEnemies[0].x < 120 && player.y === 51 || player.x === 99 && allEnemies[1].x > 30 && allEnemies[1].x < 120 && player.y === 134 || player.x === 99 && allEnemies[2].x > 30 && allEnemies[2].x < 120 && player.y === 217) {
+    if(player.x === randomIntFromInterval(97,99)  && allEnemies[0].x > 30 && allEnemies[0].x < 120 && player.y === 51 || player.x === randomIntFromInterval(97,99) && allEnemies[1].x > 30 && allEnemies[1].x < 120 && player.y === 134 || player.x === randomIntFromInterval(97,99) && allEnemies[2].x > 30 && allEnemies[2].x < 120 && player.y === 217) {
         player.resetPosition();
     }
     
     // Check collision on collumn 3
-    if(player.x === 200  && allEnemies[0].x > 150 && allEnemies[0].x < 280 && player.y === 51 || player.x === 200 && allEnemies[1].x > 150 && allEnemies[1].x < 280 && player.y === 134 || player.x === 200 && allEnemies[2].x > 150 && allEnemies[2].x < 280 && player.y === 217) {
+    if(player.x === randomIntFromInterval(198,200)  && allEnemies[0].x > 150 && allEnemies[0].x < 280 && player.y === 51 || player.x === randomIntFromInterval(198,200) && allEnemies[1].x > 150 && allEnemies[1].x < 280 && player.y === 134 || player.x === randomIntFromInterval(198,200) && allEnemies[2].x > 150 && allEnemies[2].x < 280 && player.y === 217) {
         player.resetPosition();
     }
     
     // Check collision on collumn 4
-    if(player.x === 301  && allEnemies[0].x > 250 && allEnemies[0].x < 401 && player.y === 51 || player.x === 301 && allEnemies[1].x > 250 && allEnemies[1].x < 401 && player.y === 134 || player.x === 301 && allEnemies[2].x > 250 && allEnemies[2].x < 401 && player.y === 217) {
+    if(player.x === randomIntFromInterval(299,301)  && allEnemies[0].x > 250 && allEnemies[0].x < 401 && player.y === 51 || player.x === randomIntFromInterval(299,301) && allEnemies[1].x > 250 && allEnemies[1].x < 401 && player.y === 134 || player.x === randomIntFromInterval(299,301) && allEnemies[2].x > 250 && allEnemies[2].x < 401 && player.y === 217) {
         player.resetPosition();
     }
     
@@ -338,11 +338,6 @@ Coin.prototype.addPoints = function() {
         points = points+2;
     }
     pointsContent.textContent = points;
-    
-    pointsContent.classList.add("point-add");
-    setTimeout(function() {
-        pointsContent.classList.remove("point-add");
-    }, 300);
 }
  
 // Render Coin

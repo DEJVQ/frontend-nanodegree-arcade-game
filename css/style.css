@@ -10,6 +10,20 @@ hr {
     width: 30%
 }
 
+.scoreboard {
+    width: 33%;
+    margin: 0 auto;
+}
+
+.scoreboard .stopwatch-container {
+width: 30%;
+    display: inline-block;
+}
+.scoreboard .restart {
+width: 30%;
+    display: inline-block;
+}
+
 .points-content {
     margin-top: 5%;
 }

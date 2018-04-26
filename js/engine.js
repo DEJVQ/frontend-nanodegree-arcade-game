@@ -78,10 +78,12 @@ for (var j = 0; j < restartButton.length; j++) {
     restartButton[j].addEventListener("click", function() {
         legendContent1.classList.remove("hide");
         characterSelectionBox.classList.remove("hide");
+        finishContent.classList.add("hide");
         player.resetPosition();
         pointsContent.classList.remove("collision");
         coin.resetPosition();
-
+        waterpoints = 0;
+        waterPointsContent.textContent = waterpoints;
         stopwatch.textContent = "00:00:00";
             seconds = 0; 
             minutes = 0; 
