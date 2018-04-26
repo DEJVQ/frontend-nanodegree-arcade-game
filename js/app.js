@@ -236,6 +236,12 @@ player.prototype.handleInput = function(move) {
             
             pointsContent.textContent = points;
             waterPointsContent.textContent = waterpoints;
+            
+            
+            waterPointsContent.classList.add("point-add");
+            setTimeout(function() {
+                waterPointsContent.classList.remove("point-add");
+            }, 1000);
         }
         
         player.render();
@@ -333,6 +339,10 @@ Coin.prototype.addPoints = function() {
     }
     pointsContent.textContent = points;
     
+    pointsContent.classList.add("point-add");
+    setTimeout(function() {
+        pointsContent.classList.remove("point-add");
+    }, 300);
 }
  
 // Render Coin

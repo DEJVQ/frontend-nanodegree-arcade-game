@@ -10,12 +10,12 @@ hr {
     width: 30%
 }
 
-.restart {
+.points-content {
     margin-top: 5%;
 }
 
 .restart button {
-    padding: 10px;
+    padding: 10px;;
     border: 0;
     background-color: transparent;
     font-size: 3em;
@@ -40,6 +40,10 @@ hr {
 .collision {
     color: #ef6f6f;
     transform: scale(1.2);
+}
+
+.point-add {
+    color: #52de52;
 }
 
 .container-box {
