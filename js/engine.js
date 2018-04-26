@@ -238,8 +238,12 @@ var Engine = (function(global) {
         'images/Gem Green.png',
         'images/Gem Blue.png',
         'images/Star.png',
-        'images/piggis.png',
-        'images/piggis-enemy.png'
+        'images/piggis-1.png',
+        'images/piggis-2.png',
+        'images/piggis-3.png',
+        'images/piggis-4.png',
+        'images/piggis-enemy.png',
+        'images/document.png'
     ]);
     
     Resources.onReady(init);

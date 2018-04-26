@@ -9,7 +9,7 @@ var Enemy = function() {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images   
     //this.sprite = 'images/enemy-bug.png';
-    this.sprite = 'images/enemy-bug.png';
+    Enemy.sprite = 'images/enemy-bug.png';
     
     var self = this;
     
@@ -38,7 +38,7 @@ Enemy.prototype.update = function(dt) {
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    ctx.drawImage(Resources.get(Enemy.sprite), this.x, this.y);
 };
 
 
@@ -73,6 +73,12 @@ player.prototype.render = function() {
     player.checkCollision();
     player.getCoin();
     player.checkPoints();
+    if(player.sprite.indexOf("piggis") >= 0) {
+        Enemy.sprite = "images/piggis-enemy.png";
+        coinSprite = ["images/document.png", "images/document.png", "images/document.png"];
+        coin.sprite =  coinSprite[(Math.floor(Math.random()*3))];
+    }
+    player.playerGrow();
     
 };
 
@@ -206,8 +212,22 @@ player.prototype.resetPosition = function() {
 
 
 player.prototype.checkPoints = function() {
-    if(points > 100 && waterpoints > 5 ) {
+    if(points > 100 && waterpoints > 10 ) {
         finishContent.classList.remove("hide");
+    }
+}
+
+player.prototype.playerGrow = function() {
+    if(player.sprite.indexOf("piggis") >= 0 ) {
+        if (points > 3) {
+            player.sprite = "images/piggis-2.png";
+            if (points > 5) {
+                player.sprite = "images/piggis-3.png";
+                if (points > 7) {
+                    player.sprite = "images/piggis-4.png";
+                }
+            }
+        }
     }
 }
 
@@ -304,6 +324,7 @@ Coin.prototype.resetPosition = function() {
     }
     
     coin.render();
+    
     
 }
 
