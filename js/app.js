@@ -101,8 +101,7 @@ player.prototype.render = function() {
     // Checking Player
     if(player.sprite.indexOf("piggis") >= 0) {
         Enemy.sprite = "images/piggis-enemy.png";
-        coinSprite = ["images/document.png", "images/document.png", "images/document.png"];
-        coin.sprite =  coinSprite[(Math.floor(Math.random()*3))];
+        coin.sprite =  "images/document.png";
     }
     else {
         Enemy.sprite = "images/enemy-bug.png";
