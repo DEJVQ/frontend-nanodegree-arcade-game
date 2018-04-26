@@ -9,13 +9,25 @@ hr {
     width: 30%
 }
 
-.points-container {
-    padding-top: 5%;
+.restart {
+    margin-top: 5%;
+
 }
 
-.points-container:last-of-type {
-    padding-top: 0%;
+.restart button {
+    padding: 10px;
+    border: 0;
+    background-color: transparent;
+    font-size: 3em;
+    cursor: pointer;
+    transition: 0.2s;
 }
+.restart button:hover {
+    transform: scale(0.9);
+    font-weight: 700;
+}
+
+
 
 .points {
     min-height: 100px;

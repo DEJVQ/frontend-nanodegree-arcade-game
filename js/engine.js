@@ -27,6 +27,8 @@ var legendContentButton1 = document.querySelector(".content-1 button");
 var legendContentButton2 = document.querySelector(".content-2 button");
 var legendContentButton3 = document.querySelector(".content-3 button");
 
+var restartButton = document.querySelectorAll(".restart");
+
 var clicks = 0;
 
 
@@ -44,6 +46,8 @@ legendContentButton3.addEventListener("click", function() {
     legendContent3.classList.add("hide");
     legendContentContainer.classList.add("hide");
 });
+
+
 
 
 /* Choose player */
@@ -66,6 +70,21 @@ hiddenCharacter.addEventListener("click", function () {
         player.sprite = `images/enemy-bug.png`;
     }
 });
+
+
+// Restart Button
+for (var j = 0; j < restartButton.length; j++) {
+    restartButton[j].addEventListener("click", function() {
+        legendContent1.classList.remove("hide");
+        characterSelectionBox.classList.remove("hide");
+
+        stopwatch.textContent = "00:00:00";
+            seconds = 0; 
+            minutes = 0; 
+            hours = 0;
+        clearTimeout(tick);
+    });
+}
 
 var Engine = (function(global) {
     /* Predefine the variables we'll be using within this scope,

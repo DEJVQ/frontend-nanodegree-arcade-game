@@ -101,11 +101,18 @@ player.prototype.render = function() {
     player.checkCollision();
     player.getCoin();
     player.checkPoints();
+    
+    // Checking Player
     if(player.sprite.indexOf("piggis") >= 0) {
         Enemy.sprite = "images/piggis-enemy.png";
         coinSprite = ["images/document.png", "images/document.png", "images/document.png"];
         coin.sprite =  coinSprite[(Math.floor(Math.random()*3))];
     }
+    else {
+        Enemy.sprite = "images/enemy-bug.png";
+        coinSprite = ["images/Gem Orange.png", "images/Gem Green.png", "images/Gem Blue.png"]
+    }
+    
     player.playerGrow();
     
 };
@@ -190,7 +197,7 @@ player.prototype.resetPosition = function() {
 
 
 player.prototype.checkPoints = function() {
-    if(points > 100 && waterpoints > 10 ) {
+    if(points > 100 && waterpoints > 9 ) {
         
         
         // Show time
