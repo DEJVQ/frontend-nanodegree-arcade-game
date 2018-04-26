@@ -1,10 +1,32 @@
 
 
-
+// Get random number beetween two values
 function randomIntFromInterval(min,max)
 {
     return Math.floor(Math.random()*(max-min+1)+min);
 }
+
+
+// Time counting
+function countTime() {
+    seconds++;
+    if (seconds >= 60) {
+        seconds = 0;
+        minutes++;
+        if (minutes >= 60) {
+            minutes = 0;
+            hours++;
+        }
+    }
+    
+    stopwatch.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+    
+    timeInterval();
+}
+function timeInterval() {
+    tick = setTimeout(countTime, 1000);
+}
+
 
 // Enemies our player must avoid
 
@@ -169,6 +191,14 @@ player.prototype.resetPosition = function() {
 
 player.prototype.checkPoints = function() {
     if(points > 100 && waterpoints > 10 ) {
+        
+        
+        // Show time
+        let finalTime = document.querySelector(".stopwatch-final");
+        finalTime.textContent = stopwatch.textContent;
+        clearTimeout(tick);
+        
+        // Show Congratulations
         finishContent.classList.remove("hide");
     }
 }
@@ -253,6 +283,9 @@ var parameter1 = [15,115,215,318,420];
 var parameter2 = [115,200,280];
 
 var finishContent = document.querySelector(".finish");
+
+let stopwatch = document.querySelector(".stopwatch")
+let seconds = 0, minutes = 0, hours = 0, t;
 
 var Coin = function() {
     

@@ -51,7 +51,7 @@ for (var i = 0; i < selectCharacter.length-1; i++) {
     selectCharacter[i].addEventListener("click", function() {
         player.sprite = `images/${this.className}.png`;
         characterSelectionBox.classList.add("hide");
-
+        timeInterval();
     });
 }
 hiddenCharacter.addEventListener("click", function () {
