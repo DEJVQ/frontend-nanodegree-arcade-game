@@ -23,4 +23,4 @@ You can download this game in 2 ways:
 ```git clone https://github.com/DEJVQ/frontend-nanodegree-arcade-game.git```
 
 ## Running the game
-In order to run this game you have open the *index.html* file. The game should run correctly on the most browsers.
+In order to run this game you have open the *index.html* file. The game should run correctly on the most recent browsers version.
