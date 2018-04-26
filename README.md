@@ -1,4 +1,4 @@
-# Front-end NanoDegree Arcade Game
+# Front-end Nanodegree Arcade Game
 
 The game was written with Object Oriented Programming skills.
 Pure JS.
@@ -8,7 +8,7 @@ The goal of the game is reach the water, collect additional points and avoid the
 
 Project meets the requested and additional functionality:
 * Legend
-* Choosing teh character
+* Choosing the character
 * Collecting Gems
 * Player grow
 * Hidden character and more!
