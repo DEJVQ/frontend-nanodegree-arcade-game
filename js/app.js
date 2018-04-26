@@ -184,6 +184,9 @@ player.prototype.playerGrow = function() {
                 }
             }
         }
+        if (points === 0) {
+            player.sprite = "images/piggis-1.png";
+        }
     }
 }
 
