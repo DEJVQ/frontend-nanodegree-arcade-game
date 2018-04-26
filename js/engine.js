@@ -48,16 +48,17 @@ legendContentButton3.addEventListener("click", function() {
 });
 
 
-
-
 /* Choose player */
 for (var i = 0; i < selectCharacter.length-1; i++) {
     selectCharacter[i].addEventListener("click", function() {
         player.sprite = `images/${this.className}.png`;
+        coin.sprite = "images/Gem Orange.png";
         characterSelectionBox.classList.add("hide");
         timeInterval();
     });
 }
+
+// Hidden character
 hiddenCharacter.addEventListener("click", function () {
     console.log(clicks);
     clicks++;
@@ -77,6 +78,8 @@ for (var j = 0; j < restartButton.length; j++) {
     restartButton[j].addEventListener("click", function() {
         legendContent1.classList.remove("hide");
         characterSelectionBox.classList.remove("hide");
+        player.resetPosition();
+        coin.resetPosition();
 
         stopwatch.textContent = "00:00:00";
             seconds = 0; 

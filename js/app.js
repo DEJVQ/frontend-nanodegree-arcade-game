@@ -110,7 +110,7 @@ player.prototype.render = function() {
     }
     else {
         Enemy.sprite = "images/enemy-bug.png";
-        coinSprite = ["images/Gem Orange.png", "images/Gem Green.png", "images/Gem Blue.png"]
+        coinSprite = ["images/Gem Orange.png", "images/Gem Green.png", "images/Gem Blue.png"];
     }
     
     player.playerGrow();
