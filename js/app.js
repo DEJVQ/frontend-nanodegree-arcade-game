@@ -1,5 +1,11 @@
 
 
+
+function randomIntFromInterval(min,max)
+{
+    return Math.floor(Math.random()*(max-min+1)+min);
+}
+
 // Enemies our player must avoid
 
 var Enemy = function() {
@@ -117,82 +123,32 @@ player.prototype.checkCollision = function() {
 player.prototype.getCoin = function() {
     
     if(coin.x === 15 && coin.y === 115  && player.x === -2 && player.y === 51 || coin.x === 15 && coin.y === 200  && player.x === -2 && player.y === 134 || coin.x === 15 && coin.y === 280  && player.x === -2 && player.y === 217) {
-        points++;
-        if (coin.sprite == "images/Star.png") {
-            points = points+99;
-        }
-        if (coin.sprite == "images/Gem Green.png") {
-            points = points+1;
-        }
-        if (coin.sprite == "images/Gem Blue.png") {
-            points = points+2;
-        }
-        pointsContent.textContent = points;
+        coin.addPoints();
         coin.resetPosition();
     }
     
     
-    if(coin.x === 115 && coin.y === 115  && player.x === (99||98||97)  && player.y === 51 || coin.x === 115 && coin.y === 200  && player.x === (99||98||97) && player.y === 134 || coin.x === 115 && coin.y === 280  && player.x === (99||98||97) && player.y === 217) {
-        points++;
-        if (coin.sprite == "images/Star.png") {
-            points = points+99;
-        }
-        if (coin.sprite == "images/Gem Green.png") {
-            points = points+1;
-        }
-        if (coin.sprite == "images/Gem Blue.png") {
-            points = points+2;
-        }
-        pointsContent.textContent = points;
+    if(coin.x === 115 && coin.y === 115  && player.x === randomIntFromInterval(97,99)  && player.y === 51 || coin.x === 115 && coin.y === 200  && player.x === randomIntFromInterval(97,99) && player.y === 134 || coin.x === 115 && coin.y === 280  && player.x === randomIntFromInterval(97,99) && player.y === 217) {
+        coin.addPoints();
         coin.resetPosition();
     }
     
     
-    if(coin.x === 215 && coin.y === 115  && player.x === (200||199|198) && player.y === 51 || coin.x === 215 && coin.y === 200  && player.x === (200||199|198) && player.y === 134 || coin.x === 215 && coin.y === 280  && player.x === (200||199|198) && player.y === 217) {
-        points++;
-        if (coin.sprite == "images/Star.png") {
-            points = points+99;
-        }
-        if (coin.sprite == "images/Gem Green.png") {
-            points = points+1;
-        }
-        if (coin.sprite == "images/Gem Blue.png") {
-            points = points+2;
-        }
-        pointsContent.textContent = points;
+    if(coin.x === 215 && coin.y === 115  && player.x === randomIntFromInterval(198,200) && player.y === 51 || coin.x === 215 && coin.y === 200  && player.x === randomIntFromInterval(198,200) && player.y === 134 || coin.x === 215 && coin.y === 280  && player.x === randomIntFromInterval(198,200) && player.y === 217) {
+        coin.addPoints();
         coin.resetPosition();
     }
     
     
     
-    if(coin.x === 318 && coin.y === 115  && player.x === (301||300||299) && player.y === 51 || coin.x === 318 && coin.y === 200  && player.x === (301||300||299) && player.y === 134 || coin.x === 318 && coin.y === 280  && player.x === (301||300||299) && player.y === 217) {
-        points++;
-        if (coin.sprite == "images/Star.png") {
-            points = points+99;
-        }
-        if (coin.sprite == "images/Gem Green.png") {
-            points = points+1;
-        }
-        if (coin.sprite == "images/Gem Blue.png") {
-            points = points+2;
-        }
-        pointsContent.textContent = points;
+    if(coin.x === 318 && coin.y === 115  && player.x === randomIntFromInterval(299,301) && player.y === 51 || coin.x === 318 && coin.y === 200  && player.x === randomIntFromInterval(299,301) && player.y === 134 || coin.x === 318 && coin.y === 280  && player.x === randomIntFromInterval(299,301) && player.y === 217) {
+        coin.addPoints();
         coin.resetPosition();
     }
     
     
     if(coin.x === 420 && coin.y === 115  && player.x === 400 && player.y === 51 || coin.x === 420 && coin.y === 200  && player.x === 400 && player.y === 134 || coin.x === 420 && coin.y === 280  && player.x === 400 && player.y === 217) {
-        points++;
-        if (coin.sprite == "images/Star.png") {
-            points = points+99;
-        }
-        if (coin.sprite == "images/Gem Green.png") {
-            points = points+1;
-        }
-        if (coin.sprite == "images/Gem Blue.png") {
-            points = points+2;
-        }
-        pointsContent.textContent = points;
+        coin.addPoints();
         coin.resetPosition();
     }
 }
@@ -325,6 +281,21 @@ Coin.prototype.resetPosition = function() {
     
     coin.render();
     
+}
+
+Coin.prototype.addPoints = function() {
+    
+    points++;
+    if (coin.sprite == "images/Star.png") {
+        points = points+99;
+    }
+    if (coin.sprite == "images/Gem Green.png") {
+        points = points+1;
+    }
+    if (coin.sprite == "images/Gem Blue.png") {
+        points = points+2;
+    }
+    pointsContent.textContent = points;
     
 }
 
