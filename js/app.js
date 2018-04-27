@@ -94,12 +94,12 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     //ctx.drawImage(Resources.get("images/Gem Orange.png"), this.x, this.y);
     
-    player.checkCollision();
-    player.getCoin();
-    player.checkPoints();
+    this.checkCollision();
+    this.getCoin();
+    this.checkPoints();
     
     // Checking Player
-    if(player.sprite.indexOf("piggis") >= 0) {
+    if(this.sprite.indexOf("piggis") >= 0) {
         Enemy.sprite = "images/piggis-enemy.png";
         coin.sprite =  "images/document.png";
     }
@@ -108,7 +108,7 @@ Player.prototype.render = function() {
         coinSprite = ["images/Gem Orange.png", "images/Gem Green.png", "images/Gem Blue.png"];
     }
     
-    player.playerGrow();
+    this.playerGrow();
     
 };
 
@@ -116,28 +116,28 @@ Player.prototype.render = function() {
 Player.prototype.checkCollision = function() {
     
     // Check collision on collumn 1
-    if(player.x < 0 && allEnemies[0].x < 0  && player.y === 51 || player.x < 0 && allEnemies[1].x < 0 && player.y === 134 || player.x < 0 && allEnemies[2].x < 0 && player.y === 217) {
-        player.resetPosition();
+    if(this.x < 0 && allEnemies[0].x < 0  && this.y === 51 || this.x < 0 && allEnemies[1].x < 0 && this.y === 134 || this.x < 0 && allEnemies[2].x < 0 && this.y === 217) {
+        this.resetPosition();
     }
     
     // Check collision on collumn 2
-    if(player.x === randomIntFromInterval(97,99)  && allEnemies[0].x > 30 && allEnemies[0].x < 120 && player.y === 51 || player.x === randomIntFromInterval(97,99) && allEnemies[1].x > 30 && allEnemies[1].x < 120 && player.y === 134 || player.x === randomIntFromInterval(97,99) && allEnemies[2].x > 30 && allEnemies[2].x < 120 && player.y === 217) {
-        player.resetPosition();
+    if(this.x === randomIntFromInterval(97,99)  && allEnemies[0].x > 30 && allEnemies[0].x < 120 && this.y === 51 || this.x === randomIntFromInterval(97,99) && allEnemies[1].x > 30 && allEnemies[1].x < 120 && this.y === 134 || this.x === randomIntFromInterval(97,99) && allEnemies[2].x > 30 && allEnemies[2].x < 120 && this.y === 217) {
+        this.resetPosition();
     }
     
     // Check collision on collumn 3
-    if(player.x === randomIntFromInterval(198,200)  && allEnemies[0].x > 150 && allEnemies[0].x < 280 && player.y === 51 || player.x === randomIntFromInterval(198,200) && allEnemies[1].x > 150 && allEnemies[1].x < 280 && player.y === 134 || player.x === randomIntFromInterval(198,200) && allEnemies[2].x > 150 && allEnemies[2].x < 280 && player.y === 217) {
-        player.resetPosition();
+    if(this.x === randomIntFromInterval(198,200)  && allEnemies[0].x > 150 && allEnemies[0].x < 280 && this.y === 51 || this.x === randomIntFromInterval(198,200) && allEnemies[1].x > 150 && allEnemies[1].x < 280 && this.y === 134 || this.x === randomIntFromInterval(198,200) && allEnemies[2].x > 150 && allEnemies[2].x < 280 && this.y === 217) {
+        this.resetPosition();
     }
     
     // Check collision on collumn 4
-    if(player.x === randomIntFromInterval(299,301)  && allEnemies[0].x > 250 && allEnemies[0].x < 401 && player.y === 51 || player.x === randomIntFromInterval(299,301) && allEnemies[1].x > 250 && allEnemies[1].x < 401 && player.y === 134 || player.x === randomIntFromInterval(299,301) && allEnemies[2].x > 250 && allEnemies[2].x < 401 && player.y === 217) {
-        player.resetPosition();
+    if(this.x === randomIntFromInterval(299,301)  && allEnemies[0].x > 250 && allEnemies[0].x < 401 && this.y === 51 || this.x === randomIntFromInterval(299,301) && allEnemies[1].x > 250 && allEnemies[1].x < 401 && this.y === 134 || this.x === randomIntFromInterval(299,301) && allEnemies[2].x > 250 && allEnemies[2].x < 401 && this.y === 217) {
+        this.resetPosition();
     }
     
     // Check collision on collumn 5
-    if(player.x === 400  && allEnemies[0].x > 350 && player.y === 51 || player.x === 400 && allEnemies[1].x > 350 && player.y === 134 || player.x === 400 && allEnemies[2].x > 350 && player.y === 217) {
-        player.resetPosition();
+    if(this.x === 400  && allEnemies[0].x > 350 && this.y === 51 || this.x === 400 && allEnemies[1].x > 350 && this.y === 134 || this.x === 400 && allEnemies[2].x > 350 && this.y === 217) {
+        this.resetPosition();
     }
     
 }
@@ -145,27 +145,27 @@ Player.prototype.checkCollision = function() {
 // Check if the Player got Gem
 Player.prototype.getCoin = function() {
     
-    if(coin.x === 15 && coin.y === 115  && player.x === -2 && player.y === 51 || coin.x === 15 && coin.y === 200  && player.x === -2 && player.y === 134 || coin.x === 15 && coin.y === 280  && player.x === -2 && player.y === 217) {
+    if(coin.x === 15 && coin.y === 115  && this.x === -2 && this.y === 51 || coin.x === 15 && coin.y === 200  && this.x === -2 && this.y === 134 || coin.x === 15 && coin.y === 280  && this.x === -2 && this.y === 217) {
         coin.addPoints();
         coin.resetPosition();
     }
     
-    if(coin.x === 115 && coin.y === 115  && player.x === randomIntFromInterval(97,99)  && player.y === 51 || coin.x === 115 && coin.y === 200  && player.x === randomIntFromInterval(97,99) && player.y === 134 || coin.x === 115 && coin.y === 280  && player.x === randomIntFromInterval(97,99) && player.y === 217) {
+    if(coin.x === 115 && coin.y === 115  && this.x === randomIntFromInterval(97,99)  && this.y === 51 || coin.x === 115 && coin.y === 200  && this.x === randomIntFromInterval(97,99) && this.y === 134 || coin.x === 115 && coin.y === 280  && this.x === randomIntFromInterval(97,99) && this.y === 217) {
         coin.addPoints();
         coin.resetPosition();
     }
     
-    if(coin.x === 215 && coin.y === 115  && player.x === randomIntFromInterval(198,200) && player.y === 51 || coin.x === 215 && coin.y === 200  && player.x === randomIntFromInterval(198,200) && player.y === 134 || coin.x === 215 && coin.y === 280  && player.x === randomIntFromInterval(198,200) && player.y === 217) {
+    if(coin.x === 215 && coin.y === 115  && this.x === randomIntFromInterval(198,200) && this.y === 51 || coin.x === 215 && coin.y === 200  && this.x === randomIntFromInterval(198,200) && this.y === 134 || coin.x === 215 && coin.y === 280  && this.x === randomIntFromInterval(198,200) && this.y === 217) {
         coin.addPoints();
         coin.resetPosition();
     }
     
-    if(coin.x === 318 && coin.y === 115  && player.x === randomIntFromInterval(299,301) && player.y === 51 || coin.x === 318 && coin.y === 200  && player.x === randomIntFromInterval(299,301) && player.y === 134 || coin.x === 318 && coin.y === 280  && player.x === randomIntFromInterval(299,301) && player.y === 217) {
+    if(coin.x === 318 && coin.y === 115  && this.x === randomIntFromInterval(299,301) && this.y === 51 || coin.x === 318 && coin.y === 200  && this.x === randomIntFromInterval(299,301) && this.y === 134 || coin.x === 318 && coin.y === 280  && this.x === randomIntFromInterval(299,301) && this.y === 217) {
         coin.addPoints();
         coin.resetPosition();
     }
     
-    if(coin.x === 420 && coin.y === 115  && player.x === 400 && player.y === 51 || coin.x === 420 && coin.y === 200  && player.x === 400 && player.y === 134 || coin.x === 420 && coin.y === 280  && player.x === 400 && player.y === 217) {
+    if(coin.x === 420 && coin.y === 115  && this.x === 400 && this.y === 51 || coin.x === 420 && coin.y === 200  && this.x === 400 && this.y === 134 || coin.x === 420 && coin.y === 280  && this.x === 400 && this.y === 217) {
         coin.addPoints();
         coin.resetPosition();
     }
@@ -173,8 +173,8 @@ Player.prototype.getCoin = function() {
 
 // Reset position of player when collision
 Player.prototype.resetPosition = function() {
-    player.x = 200;
-    player.y = 300;
+    this.x = 200;
+    this.y = 300;
     this.render();
     points = 0;
     pointsContent.textContent = 0;
@@ -201,18 +201,18 @@ Player.prototype.checkPoints = function() {
 
 // Additional event - for Ogarniamprad.pl - piggis character
 Player.prototype.playerGrow = function() {
-    if(player.sprite.indexOf("piggis") >= 0 ) {
+    if(this.sprite.indexOf("piggis") >= 0 ) {
         if (points > 3) {
-            player.sprite = "images/piggis-2.png";
+            this.sprite = "images/piggis-2.png";
             if (points > 5) {
-                player.sprite = "images/piggis-3.png";
+                this.sprite = "images/piggis-3.png";
                 if (points > 7) {
-                    player.sprite = "images/piggis-4.png";
+                    this.sprite = "images/piggis-4.png";
                 }
             }
         }
         if (points === 0) {
-            player.sprite = "images/piggis-1.png";
+            this.sprite = "images/piggis-1.png";
         }
     }
 }
@@ -307,19 +307,19 @@ Coin.prototype.resetPosition = function() {
     
     shuffle(parameter1);
     shuffle(parameter2);
-    coin.x = parameter1[0];
-    coin.y = parameter2[0];
+    this.x = parameter1[0];
+    this.y = parameter2[0];
     
     coinSprite = ["images/Gem Orange.png", "images/Gem Green.png", "images/Gem Blue.png"]
     
-    coin.sprite =  coinSprite[(Math.floor(Math.random()*3))];
+    this.sprite =  coinSprite[(Math.floor(Math.random()*3))];
     coinSpriteSelector++
     
     if(coinSpriteSelector === 10) {
-        coin.sprite = "images/Star.png";
+        this.sprite = "images/Star.png";
     }
     
-    coin.render();
+    this.render();
     
 }
 
@@ -327,13 +327,13 @@ Coin.prototype.resetPosition = function() {
 Coin.prototype.addPoints = function() {
     
     points++;
-    if (coin.sprite == "images/Star.png") {
+    if (this.sprite == "images/Star.png") {
         points = points+99;
     }
-    if (coin.sprite == "images/Gem Green.png") {
+    if (this.sprite == "images/Gem Green.png") {
         points = points+1;
     }
-    if (coin.sprite == "images/Gem Blue.png") {
+    if (this.sprite == "images/Gem Blue.png") {
         points = points+2;
     }
     pointsContent.textContent = points;
